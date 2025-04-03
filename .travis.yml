@@ -53,6 +53,7 @@ matrix:
 
 # TEMP  -Ddoclint=none
 script:
+  - rm -f .github/workflows/empty.yml
   - mvn -V --no-transfer-progress -Ddoclint=none
  
 after_success:
