@@ -46,6 +46,9 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: ${{ matrix.java }}
+    - name: remove empty.yml
+      run: rm -f .github/workflows/empty.yml || true
+      shell: bash
     - name: Build with Maven
       # TEMP -Ddoclint=none
       run: mvn -V --file pom.xml --no-transfer-progress -Ddoclint=none
