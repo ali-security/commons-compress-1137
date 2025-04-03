@@ -20,7 +20,7 @@ on: [push, pull_request]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     continue-on-error: ${{ matrix.experimental }}
     strategy:
       fail-fast: false
@@ -44,6 +44,8 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: ${{ matrix.java }}
+    - name: remove empty.yml
+      run: rm -f .github/workflows/empty.yml || true
     - name: Build with Maven
       # TEMP -Ddoclint=none
       run: mvn -V --file pom.xml --no-transfer-progress -Ddoclint=none
